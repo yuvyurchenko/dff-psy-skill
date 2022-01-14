@@ -16,7 +16,20 @@
 - datastore
 
 ## Week 2
-TBD
+
+### TODO
+- support more scenarios in both EN and RU NLU models
+- check confidence of NLU models
+- think about more smart language classification. not clear what is the most optimal approach with short messages in chat
+- translate data in datastore to russian
+- logging
+
+### WIP
+- NLU model and datastore updates
+
+### Done
+- I have chosen RASA NLU, created basic model to support previously written test scenario
+- solution is containerized: each language NLU model is deployed as a separate container + container with dff orchestrating incomming messages processing; run_interactive/run_test have been changed to work via http 
 
 ## Week 3
 TBD

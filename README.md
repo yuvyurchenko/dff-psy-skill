@@ -11,6 +11,7 @@ At the moment it supports two topics (flows):
 
 ```bash
 pip install -r requirements.txt
+docker-compose up -d
 ```
 Run interactive mode
 ```bash
@@ -20,11 +21,6 @@ Run tests
 ```bash
 python run_test.py
 ```
-
-## TODOs
-- russian language support
-- serch for an experiment by different descriptions
-- leverage the existing nlp models for intent/slot derivation
 
 ## Resources
 #TODO: resources

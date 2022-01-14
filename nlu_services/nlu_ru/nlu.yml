@@ -1,0 +1,61 @@
+nlu:
+- intent: greet
+  examples: |
+    - Прив
+    - Привет!
+    - Как дела,
+    - Добрый день
+    - Добро утро
+
+- intent: question
+  examples: |
+    - Что есть [научение](term)?
+    - Что такое [депрессия](term) mean?
+    - Пожалуйста, объясни мне значение слова [эксперимент](term)?
+    - Объясни [конформность](term)
+
+- lookup: term
+  examples: |
+    - Научение
+    - Депрессия
+    - Эксперимент
+
+- intent: experiment_init/exp_1
+  examples: |
+    - Расскажи мне про эксперимент связанный с научением.
+    - Знаешь ли какие-то эксперименты приводившие к детским психотравмам?
+    - Расскажи про самый старый эксперимент который ты знаешь.
+
+- intent: experiment_init/exp_2
+  examples: |
+    - Расскажи про эксперимент с тюрьмой.
+    - Хочу услышать что-нибудь про две противостоящие друг-другу группы.
+    - Какой самый опасный эксперимент ты знаешь?
+
+- intent: experiment_premise
+  examples: |
+    - Расскажи про вводные данные эксперимента
+    - В чём была исходная идея?
+
+- intent: experiment_conduct
+  examples: |
+    - Как он был проведён?
+    - Как они это сделали?
+
+- intent: experiment_outcome
+  examples: |
+    - Каков был результат?
+    - What was the outcome?
+    - Какие были сделаны выводы?
+
+rules:
+  - rule: switch to new experiment
+    steps:
+    - intent: experiment_init
+    - action: utter_experiment_init
+
+responses:
+  utter_experiment_init/exp_1:
+    - text: dummy text
+  utter_experiment_init/exp_2:
+    - text: dummy text

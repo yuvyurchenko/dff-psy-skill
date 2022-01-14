@@ -1,31 +1,29 @@
 import random
-from datastore.main import get_data
-from model.main import Lang
-
-from scenario.main import actor
-import run_interactive
+import yaml
+from run_interactive import ask, wait_init
 
 random.seed(314)
 
-# testing
+with open('dff/datastore/data_en.yaml', 'r', encoding='utf-8') as f:
+    data_en = yaml.safe_load(f)
+
 testing_dialog = [
     ("Hi", "Hi, how are you? I can tell you about some classical psychological experiments or explain a few psychological terms."),
-    ("Explain experiment", get_data(Lang.EN)['terms']['experiment']),
+    ("Explain experiment", data_en['terms']['experiment']),
     ("Explain bla-bloo-blop", "No idea what are you talking about."),
     ("What was an experiment about the prison?", "The name of the experient is Stanford Prison Experiment. It was conducted in year 1971 by Philip Zimbardo"),
-    ("Give me the premise", get_data(Lang.EN)['experiments']['exp_2']['premise']),
-    ("What was the outcome?", get_data(Lang.EN)['experiments']['exp_2']['outcome']),
-    ("Explain conformity", get_data(Lang.EN)['terms']['conformity']), # change flow
-    ("How was it conducted?", get_data(Lang.EN)['experiments']['exp_2']['conduct']) # go back to the previous topic
+    ("Give me the premise", data_en['experiments']['exp_2']['premise']),
+    ("What was the outcome?", data_en['experiments']['exp_2']['outcome']),
+    ("Explain conformity", data_en['terms']['conformity']), # change flow
+    ("How was it conducted?", data_en['experiments']['exp_2']['conduct']) # go back to the previous topic
 ]
 
 
-def run_test():
-    ctx = {}
-    for in_request, true_out_response in testing_dialog:
-        _, ctx = run_interactive.turn_handler(in_request, ctx, actor, true_out_response=true_out_response)
-    print("test passed")
-
-
 if __name__ == "__main__":
-    run_test()
+    wait_init()
+    ctx = None
+    for text, true_text_response in testing_dialog:
+        text_response, ctx = ask(text, ctx)
+        if true_text_response is not None and true_text_response != text_response:
+            raise Exception(f"{text=} -> true_out_response != out_response: {true_text_response} != {text_response}")
+    print("test passed")

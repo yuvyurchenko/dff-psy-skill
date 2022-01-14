@@ -30,39 +30,15 @@ plot = {
             RESPONSE: loc_resp.info_response,
             TRANSITIONS: {
                 "info": loc_cnd.exp_info,
-                "premise": loc_cnd.exp_premise,
-                "conduct": loc_cnd.exp_conduct,
-                "outcome": loc_cnd.exp_outcome,
+                "subtopic": loc_cnd.exp_subtopic,
                 ("terms_flow", "explain"): loc_cnd.term_explain
             }
         },
-        "premise": {
-            RESPONSE: loc_resp.premise_response,
+        "subtopic": {
+            RESPONSE: loc_resp.subtopic_response,
             TRANSITIONS: {
                 "info": loc_cnd.exp_info,
-                "premise": loc_cnd.exp_premise,
-                "conduct": loc_cnd.exp_conduct,
-                "outcome": loc_cnd.exp_outcome,
-                ("terms_flow", "explain"): loc_cnd.term_explain
-            }
-        },
-        "conduct": {
-            RESPONSE: loc_resp.conduct_response,
-            TRANSITIONS: {
-                "info": loc_cnd.exp_info,
-                "premise": loc_cnd.exp_premise,
-                "conduct": loc_cnd.exp_conduct,
-                "outcome": loc_cnd.exp_outcome,
-                ("terms_flow", "explain"): loc_cnd.term_explain
-            }
-        },
-        "outcome": {
-            RESPONSE: loc_resp.outcome_response,
-            TRANSITIONS: {
-                "info": loc_cnd.exp_info,
-                "premise": loc_cnd.exp_premise,
-                "conduct": loc_cnd.exp_conduct,
-                "outcome": loc_cnd.exp_outcome,
+                "subtopic": loc_cnd.exp_subtopic,
                 ("terms_flow", "explain"): loc_cnd.term_explain
             }
         }
@@ -72,9 +48,7 @@ plot = {
             RESPONSE: loc_resp.term_response,
             TRANSITIONS: {
                 ("experiment_flow", "info"): loc_cnd.exp_info,
-                ("experiment_flow", "premise"): loc_cnd.exp_premise,
-                ("experiment_flow", "conduct"): loc_cnd.exp_conduct,
-                ("experiment_flow", "outcome"): loc_cnd.exp_outcome,
+                ("experiment_flow", "subtopic"): loc_cnd.exp_subtopic,
                 "explain": loc_cnd.term_explain
             }
         }

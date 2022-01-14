@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  rasa-nlu-en:
+    build:
+      context: ./nlu_services/nlu_en
+      dockerfile: ../Dockerfile 
+    ports:
+      - 5005:5005
+  rasa-nlu-ru:
+    build:
+      context: ./nlu_services/nlu_ru
+      dockerfile: ../Dockerfile 
+    ports:
+      - 5006:5005
+  dff:
+    build: ./dff
+    ports:
+      - 8080:80
+    depends_on:
+      - rasa-nlu-en
+      - rasa-nlu-ru

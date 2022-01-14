@@ -1,0 +1,60 @@
+nlu:
+- intent: greet
+  examples: |
+    - Hi
+    - Hey!
+    - Hallo
+    - Good day
+    - Good morning
+
+- intent: question
+  examples: |
+    - What is [conditioning](term)?
+    - What does [depression](term) mean?
+    - Please, explain me the meaning of [experiment](term)?
+    - Explain [conformity](term)
+
+- lookup: term
+  examples: |
+    - murmur
+    - agency theory
+
+- intent: experiment_init/exp_1
+  examples: |
+    - Tell me about an experiment related to conditioning.
+    - Are there any experiments that might cause a child trauma?
+    - Tell me about the oldest experiment you know.
+
+- intent: experiment_init/exp_2
+  examples: |
+    - Tell me about an experiment with prison.
+    - I want to hear something about two confronting groups.
+    - What is the most dangerous experiment you know?
+
+- intent: experiment_premise
+  examples: |
+    - Tell me the premise
+    - What was the initial idea?
+
+- intent: experiment_conduct
+  examples: |
+    - How it was conducted?
+    - How did they do it?
+
+- intent: experiment_outcome
+  examples: |
+    - What was the result?
+    - What was the outcome?
+    - What conclusions were made?
+
+rules:
+  - rule: switch to new experiment
+    steps:
+    - intent: experiment_init
+    - action: utter_experiment_init
+
+responses:
+  utter_experiment_init/exp_1:
+    - text: dummy text
+  utter_experiment_init/exp_2:
+    - text: dummy text

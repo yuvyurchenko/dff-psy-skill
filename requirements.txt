@@ -1,5 +1,2 @@
-df_engine==0.8.1
-nltk==3.5
 pyyaml==6.0
-# spacy==3.2.1
-# deeppavlov==0.17.2
+requests==2.27.1

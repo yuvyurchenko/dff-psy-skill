@@ -1,43 +1,33 @@
-#!/usr/bin/env python
-
+import requests
 import time
-from typing import Optional, Union
 
-from scenario.main import actor
-from df_engine.core import Actor, Context
-from annotators.main import annotate
+host = 'localhost'
+port = '8080'
 
+def wait_init():
+    started = False
+    for _ in range(10):
+        try:
+            requests.get(f'http://{host}:{port}/healthcheck')
+            started = True
+        except BaseException:
+            print('Wainting for NLU Models to initialize...')
+            time.sleep(10)
+        else:
+            break
+    if not started:
+        raise EnvironmentError("Failed to wait Chat-Bot start. Most probable reason code - RASA model initialization")
 
-def turn_handler(
-    in_request: str,
-    ctx: Union[Context, str, dict],
-    actor: Actor,
-    true_out_response: Optional[str] = None,
-):
-    # Context.cast - gets an object type of [Context, str, dict] returns an object type of Context
-    ctx = Context.cast(ctx)
-
-    # Add in current context a next request of user
-    ctx.add_request(in_request)
-    ctx = annotate(ctx)
-
-    # pass the context into actor and it returns updated context with actor response
-    ctx = actor(ctx)
-    # get last actor response from the context
-    out_response = ctx.last_response
-    # the next condition branching needs for testing
-    if true_out_response is not None and true_out_response != out_response:
-        raise Exception(f"{in_request=} -> true_out_response != out_response: {true_out_response} != {out_response}")
-    else:
-        print(f"{in_request=} -> {out_response}")
-    return out_response, ctx
-
+def ask(text, ctx):
+    st_time = time.time()
+    response = requests.post(f'http://{host}:{port}/psy-chat/', json={'text': text, 'ctx': ctx}).json()
+    total_time = time.time() - st_time
+    print(f"{text=} -> {response['text']}")
+    print(f"exec time = {total_time:.3f}s")
+    return response['text'], response['ctx']
 
 if __name__ == "__main__":
-    ctx = {}
+    ctx = None
     while True:
-        in_request = input("type your answer: ")
-        st_time = time.time()
-        out_response, ctx = turn_handler(in_request, ctx, actor)
-        total_time = time.time() - st_time
-        print(f"exec time = {total_time:.3f}s")
+        text = input("type your answer: ")
+        _, ctx = ask(text, ctx)
