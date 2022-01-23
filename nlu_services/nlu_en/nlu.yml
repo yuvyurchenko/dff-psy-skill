@@ -3,21 +3,47 @@ nlu:
   examples: |
     - Hi
     - Hey!
-    - Hallo
+    - Hello
     - Good day
     - Good morning
+    - How is it going?
 
 - intent: question
   examples: |
-    - What is [conditioning](term)?
-    - What does [depression](term) mean?
-    - Please, explain me the meaning of [experiment](term)?
+    - What is [classical conditioning](term)?
+    - What does [classical conditioning](term) mean?
+    - Please, explain me the meaning of [classical conditioning](term)?
+    - Explain [classical conditioning](term)
+
+    - What is [conformity](term)?
+    - What does [conformity](term) mean?
+    - Please, explain me the meaning of [conformity](term)?
     - Explain [conformity](term)
 
-- lookup: term
-  examples: |
-    - murmur
-    - agency theory
+    - What is [agency theory](term)?
+    - What does [agency theory](term) mean?
+    - Please, explain me the meaning of [agency theory](term)?
+    - Explain [agency theory](term)
+
+    - What is [halo effect](term)?
+    - What does [halo effect](term) mean?
+    - Please, explain me the meaning of [halo effect](term)?
+    - Explain [halo effect](term)
+
+    - What is [social learning theory](term)?
+    - What does [social learning theory](term) mean?
+    - Please, explain me the meaning of [social learning theory](term)?
+    - Explain [social learning theory](term)
+
+    - What is [experiment](term)?
+    - What does [experiment](term) mean?
+    - Please, explain me the meaning of [experiment](term)?
+    - Explain [experiment](term)
+
+    - What is [depression](term)?
+    - What does [depression](term) mean?
+    - Please, explain me the meaning of [depression](term)?
+    - Explain [depression](term)
 
 - intent: experiment_init/exp_1
   examples: |
@@ -31,6 +57,36 @@ nlu:
     - I want to hear something about two confronting groups.
     - What is the most dangerous experiment you know?
 
+- intent: experiment_init/exp_3
+  examples: |
+    - Do you know any experiments related to conformism?
+    - Tell me something about conformism.
+    - Can you tell me about any conformity studies?
+
+- intent: experiment_init/exp_4
+  examples: |
+    - Tell me about an experiment related to social learning theory.
+    - Do you know any experiments about how people study to be violent?
+    - Are there any experiments about the roots of aggressive behavior?
+
+- intent: experiment_init/exp_5
+  examples: |
+    - Can you tell me about an experiment shedding light on depression?
+    - Tell me something about depression.
+    - Do you know any experiments related to depression?
+
+- intent: experiment_init/exp_6
+  examples: |
+    - Do you know any experiments explaining atrocities made by Nazi Germany during World War II?
+    - Tell me about an experiment related to the problems of authority and obedience.
+    - Do you know any experiments exploring the nature of authority?
+
+- intent: experiment_init/exp_7
+  examples: |
+    - What is the newest experiment you know?
+    - Do you know anyting related to the topic of cognitive bias?
+    - Tell me something about cognitive bias. 
+
 - intent: experiment_premise
   examples: |
     - Tell me the premise
@@ -38,7 +94,7 @@ nlu:
 
 - intent: experiment_conduct
   examples: |
-    - How it was conducted?
+    - How was it conducted?
     - How did they do it?
 
 - intent: experiment_outcome
@@ -57,4 +113,14 @@ responses:
   utter_experiment_init/exp_1:
     - text: dummy text
   utter_experiment_init/exp_2:
+    - text: dummy text
+  utter_experiment_init/exp_3:
+    - text: dummy text
+  utter_experiment_init/exp_4:
+    - text: dummy text
+  utter_experiment_init/exp_5:
+    - text: dummy text
+  utter_experiment_init/exp_6:
+    - text: dummy text
+  utter_experiment_init/exp_7:
     - text: dummy text

@@ -9,7 +9,8 @@ def greetings(ctx: Context, actor: Actor, *args, **kwargs) -> bool:
 def exp_info(ctx: Context, actor: Actor, *args, **kwargs) -> bool:
     intent = annotation(ctx).intent
     return intent.type == Intent.EXPERIMENT_TALK \
-        and intent.data.subtopic_id == Subtopic.INFO
+        and intent.data.subtopic_id == Subtopic.INFO \
+        and intent.data.topic_id is not None
 
 def exp_subtopic(ctx: Context, actor: Actor, *args, **kwargs) -> bool:
     intent = annotation(ctx).intent

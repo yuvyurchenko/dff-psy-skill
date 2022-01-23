@@ -6,6 +6,9 @@ from scenario.condition import term_explain
 with open('datastore/data_en.yaml', 'r', encoding='utf-8') as f:
     data_en = yaml.safe_load(f)
 
+with open('datastore/data_ru.yaml', 'r', encoding='utf-8') as f:
+    data_ru = yaml.safe_load(f)
+
 def get_experiment(lang: Lang, id: str) -> dict:
     return get_data(lang)['experiments'][id]
 
@@ -37,6 +40,6 @@ def get_data(lang: Lang):
     if lang == Lang.EN:
         return data_en
     elif lang == Lang.RUS:
-        raise ValueError('Unsupported language yet')
+        return data_ru
     else:
         raise ValueError(f'Unsupported language: {lang}')

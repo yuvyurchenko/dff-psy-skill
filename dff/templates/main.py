@@ -1,7 +1,7 @@
 from model.main import Lang
 
 def info_response_template_ru(info: dict) -> str:
-    pass
+    return f"Название эксперимента: {info['title']}. Дата проведения: {info['year']}. Автор: {info['author']}"
 
 def info_response_template_en(info: dict) -> str:
     return f"The name of the experient is {info['title']}. It was conducted in year {info['year']} by {info['author']}"

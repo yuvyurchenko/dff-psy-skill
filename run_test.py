@@ -7,6 +7,9 @@ random.seed(314)
 with open('dff/datastore/data_en.yaml', 'r', encoding='utf-8') as f:
     data_en = yaml.safe_load(f)
 
+with open('dff/datastore/data_ru.yaml', 'r', encoding='utf-8') as f:
+    data_ru = yaml.safe_load(f)
+
 testing_dialog = [
     ("Hi", "Hi, how are you? I can tell you about some classical psychological experiments or explain a few psychological terms."),
     ("Explain experiment", data_en['terms']['experiment']),
@@ -15,7 +18,14 @@ testing_dialog = [
     ("Give me the premise", data_en['experiments']['exp_2']['premise']),
     ("What was the outcome?", data_en['experiments']['exp_2']['outcome']),
     ("Explain conformity", data_en['terms']['conformity']), # change flow
-    ("How was it conducted?", data_en['experiments']['exp_2']['conduct']) # go back to the previous topic
+    ("How was it conducted?", data_en['experiments']['exp_2']['conduct']), # go back to the previous topic
+    ("hfgdhhdhdhhdhdh hhdhhfsfhdskjfhkd hsdjkfhdskfksdfds", "Sorry, didn't get you =("), # fallback
+    ("Знаешь ли какие-то эксперименты исследующие конформизим?", "Название эксперимента: Исследование конформизма Аша. Дата проведения: 1951. Автор: Соломон Аш"), # transparently switch the language
+    ("Что такое конформизм?", data_ru['terms']['конформизм']), # change flow
+    ("Что такое мурмур?", "Друг, ты о чём?"), # asking about unknown term handling
+    ("В чём была исходная идея?", data_ru['experiments']['exp_3']['premise']),
+    ("Как они это сделали?", data_ru['experiments']['exp_3']['conduct']),
+    ("Какие были сделаны выводы?", data_ru['experiments']['exp_3']['outcome'])
 ]
 
 

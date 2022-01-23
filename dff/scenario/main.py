@@ -22,7 +22,11 @@ plot = {
             }
         },
         "fallback": {
-            RESPONSE: loc_resp.fallback_response
+            RESPONSE: loc_resp.fallback_response,
+            TRANSITIONS: {
+                ("experiment_flow", "info"): loc_cnd.exp_info,
+                ("terms_flow", "explain"): loc_cnd.term_explain
+            }
         },
     },
     "experiment_flow": {

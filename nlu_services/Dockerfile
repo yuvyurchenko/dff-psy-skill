@@ -8,6 +8,9 @@ COPY ./requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN apt-get update
+RUN apt-get install -y curl
+
 # Don't use terminal buffering, print all to stdout / err right away
 ENV PYTHONUNBUFFERED 1
 

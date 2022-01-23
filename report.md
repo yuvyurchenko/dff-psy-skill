@@ -32,7 +32,21 @@
 - solution is containerized: each language NLU model is deployed as a separate container + container with dff orchestrating incomming messages processing; run_interactive/run_test have been changed to work via http 
 
 ## Week 3
-TBD
+### TODO
+- test
+- report
+
+### WIP
+- test
+- report
+
+### Done
+- datastore translation
+- added confidence check 
+- logging & container heltcheck-driven initialization
 
 ## Week 4
-TBD
+
+### Done
+- minor adjustments
+- report
